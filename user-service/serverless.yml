@@ -60,6 +60,12 @@ custom:
   customBasePath: userApi
 
 functions:
+  test:
+    handler: handler.getUser
+    events:
+      - http:
+          path: /{id}
+          method: GET
   signup:
     handler: handler.createUser
     events:
