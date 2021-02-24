@@ -25,3 +25,9 @@ module.exports.createUser = async (event, context, callback) => {
         }
     })
 }
+
+module.exports.loginUser = async (event) => {
+    const responce = {data: 'userData is login'};
+
+    return {body : JSON.stringify(event)};
+}
