@@ -5,9 +5,7 @@ module.exports.getUser = async (event, context, callback) => {
         user: "user succ",
         body: JSON.stringify(
             {
-                event,
-                context,
-                callback,
+                id: event.pathParameters.id
             }
         ),
     }
