@@ -6,3 +6,13 @@ module.exports.auth = () => {
         }
     })
 }
+
+module.exports.jwt = () => {
+    return ({
+        before: (handler, next) => {
+            console.log(handler);
+            handler.user = "user data"
+            next();
+        }
+    })
+};
