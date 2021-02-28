@@ -1,9 +1,8 @@
 
-const db = require("models/index")
-const connectToDatabase = require("models/index")
-const Users = require("models/users")
+const db = require("../models/index")
 
 module.exports.getUser = async (event, context, callback) => {
+    console.log("get user");
     return {
         user: "user succ",
         body: JSON.stringify(
