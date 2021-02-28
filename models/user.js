@@ -1,75 +1,67 @@
-const Sequelize = require('sequelize');
-const db = require('./index');
+const mongoose = require('mongoose');
 const crypto = require('crypto');
-var uuidv1 = require('uuidv1');
-const { encryptPassword } = require('../handlers/passwordEncrypt');
-const User = db.define('usr', {
-    id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-    },
+const uuidv1 = require('uuidv1');
+
+const userSchema = new mongoose.Schema({
     name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        isAlpha: true,
+        type: String,
+        trim: true,
+        required: true,
+        maxlength: 32
     },
     email: {
-        type: Sequelize.STRING,
-        unique: true,
-        allowNull: false,
-        isEmail: true,
+        type: String,
+        trim: true,
+        required: true,
+        unique: 100
     },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
+    phone: {
+        type: String,
+        trim: true,
+        required: true,
+        unique: 13
     },
-    dob: {
-        type: Sequelize.DATE,
-        allowNull: false
+    hashed_password: {
+        type: String,
+        required: true,
     },
-    salt: {
-        type: Sequelize.STRING,
-    },
+    salt: String,
     role: {
-        type: Sequelize.INTEGER,
-        defaultValue: 1
+        type: Number,
+        default: 0
     },
-    status: {
-        type: Sequelize.ENUM('active', 'banned', 'deleted', 'notverified','disabled'),
-        defaultValue: 'notverified'
-    },
-    referalcode: {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    isReferEnabled: {
-        type: Sequelize.BOOLEAN,
-        allowNull: true,
-        defaultValue:false,
-    },
-    referCount: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        defaultValue:0,
-    },
-    referCountLimit: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        defaultValue:10,
-    },
-
+}, {
+    timestamps: true
 });
 
-User.beforeCreate(function (user, options) {
-    user.salt = uuidv1();
-    let _hashPassword = encryptPassword(user.salt, user.password);
-    user.password = _hashPassword;
-});
+userSchema.virtual('password')
+    
+    .set(function (password) {
+        this._password = password,
+        this.salt = uuidv1(),
+        this.hashed_password = this.encryptPassword(password)
+    })
+    .get(function () {
+        return this.password
+    })
+
+userSchema.methods = {
+
+    authenticate: function(password){
+        return this.encryptPassword(password) === this.hashed_password;
+    },
 
 
-User.sync().then(() => {
-    console.log('Users table created');
-});
-module.exports = User;
+    encryptPassword: function (password) {
+        if (!password) return '';
+        try {
+            return crypto.createHmac('sha1', this.salt)
+                .update(password)
+                .digest('hex')
+        }catch(err){
+            return "";
+        }
+    }
+};
+
+module.exports = mongoose.model("User", userSchema);

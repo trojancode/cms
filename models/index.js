@@ -1,10 +1,28 @@
-const Sequelize = require('sequelize');
-// module.exports = new Sequelize('ebdb', 'postgres', 'utubelink983', {
-//  dialect: 'postgres',
-//  host: 'aa9lc2gqctazlf.ca2n8bthyrem.us-east-2.rds.amazonaws.com',
-//  operatorAliases: false
-// });
-// module.exports = new Sequelize('postgres://yfpegchx:Hlt7bAPsOWvPTklGaAVAqIBh5AKORNw0@john.db.elephantsql.com:5432/yfpegchx');
+const { StitchClientFactory, BSON } = require('mongodb-stitch-server-sdk')
+const { ObjectId } = BSON
+const appId = "application-0-jbxvr"
+const database = "mongodb+srv://kaimly:kaimly@cluster0.yo1gz.mongodb.net/test?retryWrites=true&w=majority"
+const connection = {}
 
+module.exports = async () => {
+  if (connection.isConnected) {
+    console.log('[MongoDB Stitch] Using existing connection to Stitch')
+    return connection
+  }
 
-module.exports = new Sequelize('postgres://gatapuch:DCnIOg0hPYJiIykG8S37RspeYOXNFl-r@john.db.elephantsql.com:5432/gatapuch');
+  try {
+    const client = await StitchClientFactory.create(appId)
+    const db = client.service('mongodb', 'mongodb-atlas').db(database)
+    await client.login()
+    const ownerId = client.authedId()
+    console.log('[MongoDB Stitch] Created connection to Stitch')
+
+    connection.isConnected = true
+    connection.db = db
+    connection.ownerId = ownerId
+    connection.ObjectId = ObjectId
+    return connection
+  } catch (err) {
+    console.error(err)
+  }
+}
