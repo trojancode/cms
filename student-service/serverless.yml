@@ -55,7 +55,6 @@ package:
    - ../middleware/**
    - ../models/**
   exclude:
-    - node_modules/**
     - package-lock.json
     - ../node_modules/**
     - ../middleware/node_modules/**

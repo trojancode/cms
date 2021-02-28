@@ -167,7 +167,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/user/dev/1614502695798-2021-02-28T08:58:15.798Z/user.zip"
+          "S3Key": "serverless/user/dev/1614509466996-2021-02-28T10:51:06.996Z/user.zip"
         },
         "Handler": "handler.getUser",
         "Runtime": "nodejs12.x",
@@ -192,7 +192,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/user/dev/1614502695798-2021-02-28T08:58:15.798Z/user.zip"
+          "S3Key": "serverless/user/dev/1614509466996-2021-02-28T10:51:06.996Z/user.zip"
         },
         "Handler": "handler.createUser",
         "Runtime": "nodejs12.x",
@@ -210,24 +210,24 @@
         "SignupLogGroup"
       ]
     },
-    "TestLambdaVersionpJMMmv6XspDGFvkcs0EP36lXIQRSkwO9FSlv9p30U": {
+    "TestLambdaVersiontCkAG8lEyVJNhoP6JRbgHPkrFZDVDGDJgEuzd3y7vak": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "TestLambdaFunction"
         },
-        "CodeSha256": "TDqDIiees5tfdi7LVqjb35jq/D8I/ZekI6ugNCchB3Y="
+        "CodeSha256": "pUdSi6oS2s01ZyvX+4MOkbjxKnkK+m47FvxXLdslLuc="
       }
     },
-    "SignupLambdaVersionYqXa2URJTsZSpoME0fEU8xj8bmAWgBEshVOlkMtHH9Q": {
+    "SignupLambdaVersion95O68wNxzLQY3yMaTWECnvMwrLEMZX5TyAI4zPBlaI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SignupLambdaFunction"
         },
-        "CodeSha256": "TDqDIiees5tfdi7LVqjb35jq/D8I/ZekI6ugNCchB3Y="
+        "CodeSha256": "pUdSi6oS2s01ZyvX+4MOkbjxKnkK+m47FvxXLdslLuc="
       }
     },
     "ApiGatewayRestApi": {
@@ -370,7 +370,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1614502681026": {
+    "ApiGatewayDeployment1614509458112": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -467,13 +467,13 @@
     "TestLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "TestLambdaVersionpJMMmv6XspDGFvkcs0EP36lXIQRSkwO9FSlv9p30U"
+        "Ref": "TestLambdaVersiontCkAG8lEyVJNhoP6JRbgHPkrFZDVDGDJgEuzd3y7vak"
       }
     },
     "SignupLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SignupLambdaVersionYqXa2URJTsZSpoME0fEU8xj8bmAWgBEshVOlkMtHH9Q"
+        "Ref": "SignupLambdaVersion95O68wNxzLQY3yMaTWECnvMwrLEMZX5TyAI4zPBlaI"
       }
     },
     "ServiceEndpoint": {
