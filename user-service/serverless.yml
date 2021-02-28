@@ -53,9 +53,12 @@ provider:
 package:
   include:
    - ../middleware/**
-#  exclude:
-#    - exclude-me.js
-#    - exclude-me-dir/**
+   - ../models/**
+  exclude:
+    - node_modules/**
+    - ../node_modules/**
+    - ../middleware/node_modules/**
+    - ../models/node_modules/**
 custom:
   customBasePath: userApi
 
