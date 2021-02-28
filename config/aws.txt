@@ -1,0 +1,7 @@
+AKIA55IZGXXWL6ROO6WK
+
+
+SO9JVViay3N9jU4Up87onlRDYy34tfVMRvTELcng
+
+
+arn:aws:iam::956219964908:role/serverlessrole

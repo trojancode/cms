@@ -167,7 +167,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/user/dev/1614502695798-2021-02-28T08:58:15.798Z/user.zip"
+          "S3Key": "serverless/user/dev/1614506744871-2021-02-28T10:05:44.871Z/user.zip"
         },
         "Handler": "handler.getUser",
         "Runtime": "nodejs12.x",
@@ -192,7 +192,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/user/dev/1614502695798-2021-02-28T08:58:15.798Z/user.zip"
+          "S3Key": "serverless/user/dev/1614506744871-2021-02-28T10:05:44.871Z/user.zip"
         },
         "Handler": "handler.createUser",
         "Runtime": "nodejs12.x",
@@ -370,7 +370,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1614502681026": {
+    "ApiGatewayDeployment1614506740501": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {

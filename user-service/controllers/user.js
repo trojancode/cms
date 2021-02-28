@@ -1,7 +1,7 @@
 
-const db = require("../../models/index")
-const connectToDatabase = require("../../models/index")
-const Users = require("../../models/users")
+const db = require("models/index")
+const connectToDatabase = require("models/index")
+const Users = require("models/users")
 
 module.exports.getUser = async (event, context, callback) => {
     return {

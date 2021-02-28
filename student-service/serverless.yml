@@ -26,8 +26,9 @@ provider:
   lambdaHashingVersion: 20201221
 
 # you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+stage: dev
+region: us-east-1
+role: arn:aws:iam::956219964908:role/serverlessrole
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -58,6 +59,8 @@ package:
     - node_modules/**
     - package-lock.json
     - ../node_modules/**
+    - ../middleware/node_modules
+    - ../models/node_modules
     - ../middleware/node_modules/**
     - ../models/node_modules/**
 
