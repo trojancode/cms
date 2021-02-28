@@ -3,3 +3,7 @@ user-service/node_modules
 student-service/node_modules
 ./user-service/node_modules
 ./student-service/node_modules
+models/node_modules
+models/package-lock.json
+user-service/package-lock.json
+student-service/package-lock.json

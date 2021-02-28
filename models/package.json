@@ -12,6 +12,7 @@
         "crypto": "^1.0.1",
         "mongodb-stitch-server-sdk": "^4.8.0",
         "mongoose": "^5.11.15",
+        "mquery": "^3.2.4",
         "uuidv1": "^1.6.14"
     }
 }

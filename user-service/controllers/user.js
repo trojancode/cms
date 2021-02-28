@@ -1,5 +1,7 @@
 
+const db = require("../../models/index")
 const connectToDatabase = require("../../models/index")
+const Users = require("../../models/users")
 
 module.exports.getUser = async (event, context, callback) => {
     return {
@@ -14,24 +16,17 @@ module.exports.getUser = async (event, context, callback) => {
     }
 }
 
-module.exports.createUser = async(event, context, callback) => {
-    try {
-        const { db } = await connectToDatabase()
-        const { insertedId } = await db.collection('users')
-            .insertOne(JSON.parse(event.body))
-
-        const addedObject = await db.collection('users')
-            .findOne({ _id: insertedId })
-
+module.exports.createUser = async (event, context, callback) => {
+    return await db.users.create(JSON.parse(event.body)).then(data=>{
         return {
-            statusCode: 200,
-            body: JSON.stringify(addedObject)
+            body: JSON.stringify(data)
         }
-    } catch (err) {
+    }).catch(err=>{
+        console.log(err);
         return {
-            statusCode: err.statusCode || 500,
-            headers: { 'Content-Type': 'text/plain' },
-            body: 'Could not create the object.'
+            body: JSON.stringify({
+                error:err
+            })
         }
-    }
+    })
 }
